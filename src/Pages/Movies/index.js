@@ -5,7 +5,6 @@ import { toast } from 'react-toastify'
 
 import './styles.css'
 
-import Header from '../../Components/Header'
 
 function Movies() {
 
@@ -52,44 +51,37 @@ function Movies() {
 
     if (loading) {
         return (
-            <>
-                <Header />
 
-                <div className='loading'>
-                    <h2>Carregando detalhes...</h2>
-                </div>
-            </>
+            <div className='loading'>
+                <h2>Carregando detalhes...</h2>
+            </div>
         )
     }
 
 
     return (
-        <>
-            <Header />
+        <section className='s-info-movie'>
+            <article className='info-movie'>
+                <h2>{movie.title}</h2>
 
-            <section className='s-info-movie'>
-                <article className='info-movie'>
-                    <h2>{movie.title}</h2>
+                <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={`Imagem do Filme ${movie.title}`} />
 
-                    <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={`Imagem do Filme ${movie.title}`} />
+                <b>Sinopse</b>
+                <p>{movie.overview}</p>
 
-                    <b>Sinopse</b>
-                    <p>{movie.overview}</p>
+                <span>Avaliação: {movie.vote_average}</span>
 
-                    <span>Avaliação: {movie.vote_average}</span>
-
-                    <div className='buttons-movie'>
-                        <button onClick={saveMovie}>Salvar</button>
-                        <button>
-                            <a href={`https://youtube.com/results?search_query=${movie.title} Trailer`}
-                                target="_blank"
-                                rel='noreferrer'>Trailer
-                            </a>
-                        </button>
-                    </div>
-                </article>
-            </section>
-        </>
+                <div className='buttons-movie'>
+                    <button onClick={saveMovie}>Salvar</button>
+                    <button>
+                        <a href={`https://youtube.com/results?search_query=${movie.title} Trailer`}
+                            target="_blank"
+                            rel='noreferrer'>Trailer
+                        </a>
+                    </button>
+                </div>
+            </article>
+        </section>
     )
 }
 

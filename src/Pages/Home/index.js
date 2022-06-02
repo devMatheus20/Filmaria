@@ -4,7 +4,6 @@ import axios from 'axios'
 
 import './styles.css'
 
-import Header from '../../Components/Header'
 
 
 
@@ -33,36 +32,26 @@ function Home() {
 
     if (loading) {
         return (
-            <>
-                <Header />
-
-                <div className='loading'>
-                    <h2>Carregando detalhes...</h2>
-                </div>
-            </>
+            <div className='loading'>
+                <h2>Carregando detalhes...</h2>
+            </div>
         )
     }
 
 
     return (
-        <>
-            <Header />
+        <section className='s-movies'>
+            {movies.map(movie =>
 
-            <section className='s-movies'>
-                {movies.map(movie =>
+                <article key={movie.id} className="container-movie">
+                    <h2>{movie.title}</h2>
 
-                    <article key={movie.id} className="container-movie">
-                        <h2>{movie.title}</h2>
+                    <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={`Imagem do Filme ${movie.title}`} />
 
-                        <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={`Imagem do Filme ${movie.title}`} />
-
-                        <button onClick={() => goToMovies(movie.id)}>Acessar</button>
-                    </article>
-                )}
-            </section>
-        </>
-
-
+                    <button onClick={() => goToMovies(movie.id)}>Acessar</button>
+                </article>
+            )}
+        </section>
     )
 }
 

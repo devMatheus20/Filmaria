@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import './styles.css'
 
-import Header from '../../Components/Header';
 
 
 
@@ -32,30 +31,26 @@ function Favorites() {
 
 
     return (
-        <>
-            <Header />
+        <section className='s-favorites'>
+            <article>
+                <h2>Meus Filmes Salvos</h2>
 
-            <section className='s-favorites'>
-                <article>
-                    <h2>Meus Filmes Salvos</h2>
+                {favorites.length === 0 && <span className='none'>Você não possui nenhum filme!</span>}
 
-                    {favorites.length === 0 && <span className='none'>Você não possui nenhum filme!</span>}
+                {favorites.map(movie =>
+                    <div key={movie.id} className="favorites">
+                        <span>{movie.title}</span>
 
-                    {favorites.map(movie =>
-                        <div key={movie.id} className="favorites">
-                            <span>{movie.title}</span>
-
-                            <div>
-                                <Link className='details' to={`/filmes/${movie.id}`}>Ver Detalhes</Link>
-                                <button onClick={() => deleteMovie(movie.id)} className='delete'>Excluir</button>
-                            </div>
+                        <div>
+                            <Link className='details' to={`/filmes/${movie.id}`}>Ver Detalhes</Link>
+                            <button onClick={() => deleteMovie(movie.id)} className='delete'>Excluir</button>
                         </div>
+                    </div>
 
-                    )}
-                </article>
+                )}
+            </article>
 
-            </section>
-        </>
+        </section>
     )
 }
 
