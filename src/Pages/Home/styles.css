@@ -58,6 +58,10 @@
 
 
 @media(max-width:550px) {
+    .s-movies {
+        padding: 50px;
+    }
+
     .container-movie {
         min-width: 380px;
     }

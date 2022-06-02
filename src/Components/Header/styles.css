@@ -12,7 +12,7 @@ header h1 {
     font-size: 35px;
 }
 
-header button {
+.favoritos {
     background-color: transparent;
     margin-right: 30px;
     padding: 5px 30px;
@@ -22,14 +22,14 @@ header button {
     font-weight: 500;
     color: #dddddd;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.4s;
+    text-decoration: none;
 }
 
-header button:hover {
+.favoritos:hover {
     background-color: #dddddd;
     color: #000;
 }
-
 
 @media(max-width: 800px) {
     header {
@@ -40,9 +40,10 @@ header button:hover {
         font-size: 25px;
     }
 
-    header button {
-        padding: 5px 15px;
+    .favoritos {
+        padding: 10px 15px;
         margin-right: 0;
+        font-size: 17px;
     }
   }
 
