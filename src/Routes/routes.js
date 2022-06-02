@@ -20,6 +20,7 @@ function myRoutes() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/filmes/:id" element={<Movies/>}/>
                 <Route path="/favoritos" element={<Favorites/>}/>
+
                 <Route path="*" element={<Error/>}/>
             </Routes>
         </Router>
