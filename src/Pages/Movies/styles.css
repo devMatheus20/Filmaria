@@ -3,8 +3,6 @@
     align-items: center;
     justify-content: center;
     padding: 30px 40px;
-    background-color: #000;
-    min-height: 100vh;
 }
 
 .info-movie {
@@ -17,7 +15,7 @@
 }
 
 .info-movie img {
-    height: 450px;
+    height: 500px;
     width: 100%;
     object-fit: cover;
     border-radius: 0.4rem;
@@ -66,7 +64,6 @@
 .buttons-movie button:active {
     opacity: 0.9;
 }
-
 
 
 @media(max-width: 600px) {

@@ -10,6 +10,7 @@ import Header from '../../Components/Header'
 function Movies() {
 
     const [movie, setMovie] = useState({})
+    const [loading, setLoading] = useState(true)
 
     const { id } = useParams()
 
@@ -21,30 +22,44 @@ function Movies() {
         }
 
         fetchMovie()
+
+        setLoading(false)
     }, [id])
 
     function saveMovie() {
-       const myLocal = localStorage.getItem('@primefilmes')
+        const myLocal = localStorage.getItem('@primefilmes')
 
-       const savedMovies = JSON.parse(myLocal) || []
+        const savedMovies = JSON.parse(myLocal) || []
 
-       const verified = savedMovies.some(movie1 => movie1.id === movie.id)
-       
-       if(verified) {
-           toast.warn("Esse filme já está em sua lista!", {
-               theme: "colored"
-           })
-            
-           return
-       }
-       
-       savedMovies.push(movie)
+        const verified = savedMovies.some(movie1 => movie1.id === movie.id)
 
-       localStorage.setItem('@primefilmes', JSON.stringify(savedMovies))
+        if (verified) {
+            toast.warn("Esse filme já está em sua lista!", {
+                theme: "colored"
+            })
 
-       toast.success("Filme salvo com sucesso!", {
-        theme: "colored"
-    })
+            return
+        }
+
+        savedMovies.push(movie)
+
+        localStorage.setItem('@primefilmes', JSON.stringify(savedMovies))
+
+        toast.success("Filme salvo com sucesso!", {
+            theme: "colored"
+        })
+    }
+
+    if (loading) {
+        return (
+            <>
+                <Header />
+
+                <div className='loading'>
+                    <h2>Carregando detalhes...</h2>
+                </div>
+            </>
+        )
     }
 
 

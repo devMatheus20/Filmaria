@@ -11,6 +11,7 @@ import Header from '../../Components/Header'
 function Home() {
 
     const [movies, setMovies] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const navigate = useNavigate()
 
@@ -18,14 +19,28 @@ function Home() {
         async function fetchMovies() {
             const { data: newMovies } = await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=86da2cf4cf000ed3bc664a7dd307a24b&language=pt-BR')
 
-            setMovies([...newMovies.results.splice(8, 6)])
+            setMovies([...newMovies.results.splice(1, 6)])
         }
 
         fetchMovies()
+
+        setLoading(false)
     }, [])
 
     function goToMovies(movieID) {
         navigate(`./filmes/${movieID}`)
+    }
+
+    if (loading) {
+        return (
+            <>
+                <Header />
+
+                <div className='loading'>
+                    <h2>Carregando detalhes...</h2>
+                </div>
+            </>
+        )
     }
 
 

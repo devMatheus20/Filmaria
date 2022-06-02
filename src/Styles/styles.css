@@ -8,3 +8,8 @@
   font-family: 'Roboto', sans-serif;
 }
 
+html {
+  min-height: 100vh;
+  background-color: #000;
+}
+
